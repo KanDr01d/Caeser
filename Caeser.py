@@ -1,5 +1,3 @@
-#Rewrite
-#Version
 import secrets,os
 from os import name
 from time import sleep
