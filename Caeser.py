@@ -17,9 +17,50 @@ def clear():
 LowAlpha = "abcdefghijklmnopqrstuvwxyz"
 UpAlpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+#Input custom string
+def CustomString():
+	global UpAlpha, LowAlpha, NewAlpha
+	def TryAgain():
+		sleep(2)
+		clear()
+		CustomString()
+
+	String = str(input("Do you use custom alphabet string? (Y/N): ").upper())
+	if String == "N":
+		pass
+	elif String == "Y":
+		NewAlpha = str(input("Input custom string: ").lower())
+		if NewAlpha.isalpha() is not True:
+			print ("Invalid string: Only Alphabet string alowed.")
+			TryAgain()
+		else:
+			if len(NewAlpha) > len(LowAlpha) or len(NewAlpha) < len(UpAlpha):
+				print ("Invalid string: Your string have ",len(NewAlpha),(". Only 26 character strings are allowed"))
+				TryAgain()
+			else:
+				for Checker in range(len(NewAlpha)):
+					if NewAlpha[Checker] in LowAlpha:
+						Count = NewAlpha.count(NewAlpha[Checker])
+						if Count > 1:
+							print ("Ay, you seen to have",Count, NewAlpha[Checker], "in your string. What do you suppose me to do with your step-mum?")
+							print ("Check your string carefully!")
+							TryAgain()
+						elif Count == 0:
+							print ("Ay, you seen to have",Count, NewAlpha[Checker], "in your string. What do you suppose me to do with your missing-mum?")
+							print ("Check your string carefully!")
+							TryAgain()
+						else:
+							pass
+			LowAlpha = NewAlpha.lower()
+			UpAlpha = NewAlpha.upper()
+	else:
+		print ("SyntaxError: Unknow command")
+		TryAgain()
+
 #Encrypt program
 def encrypt(original):
 	crypttext = ""
+	CustomString()
 	for char in original:
 		if char in LowAlpha:
 			encrypttext = (LowAlpha.find(char) + Key) % 26
@@ -91,6 +132,7 @@ def decrypt (original):
 #Decrypt screen
 def DecryptScreen():
 	original = input ("Enter the text you want to be decrypt: ")
+	CustomString()
 	DeKey()
 	if WIYK == "O":
 		IK()
