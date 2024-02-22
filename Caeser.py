@@ -90,7 +90,7 @@ def EncryptScreen():
 #Decrypt key (or DeKey)
 def DeKey():
 	global WIYK
-	WIYK = input ("Enter the original key or use key detector? (O - Original key / K - Key detector): ")
+	WIYK = input ("Enter the original key or use key detector? (O - Original key / K - Key detector): ").upper()
 	return WIYK
 
 #Decrypt program
@@ -173,13 +173,13 @@ def Menu(str):
 	print ("decrypt					Decode the Caesar message to normal text")
 	print ("exit            			I dont think we need to explain about this one \n")
 	MenuOpt = input(">>	").lower()
-	if MenuOpt == ("encrypt"):
+	if MenuOpt == ("encrypt") or MenuOpt == ("en"):
 		EncryptScreen()
 		exit(0)
-	elif MenuOpt == ("decrypt"):
+	elif MenuOpt == ("decrypt") or MenuOpt == ("de"):
 		DecryptScreen()
 		exit(0)
-	elif MenuOpt == "exit":
+	elif MenuOpt == "exit" or MenuOpt == ("e"):
 		exit(0)
 	else:
 		print ("Syntax Error: Not know command.")
